@@ -47,7 +47,7 @@
                 <br>    
                 <div class="row">
                     <Label class="col-3">Saldo:</Label>
-                    <input class="col-2" type="number" name="txtSaldo" placeholder="Ingrese el saldo inicial" value=<%=Saldo%>>
+                    <input class="col-2" type="number" min="1" value="1" name="txtSaldo" placeholder="Ingrese el saldo inicial" value=<%=Saldo%>>
                     <div class="col-1"></div>
                     <button class="col-2 btn btn-info" type="submit" name="buttonPressed" value="4">Depositar</button>
                      <div class="col-1"></div>
@@ -57,7 +57,7 @@
                 <br>
                 <div class="row">
                     <label class="col-4">Interes:</label>
-                    <input class="col-4" type="number" step=".01" name="txtInteres" placeholder="Ingrese el interes" value=<%=Interes%>>
+                    <input class="col-4" type="number" min="0.01" value="0.01" step=".01" name="txtInteres" placeholder="Ingrese el interes" value=<%=Interes%>>
                     <button class="col-4  btn btn-info" type="submit" name="buttonPressed" value="6">Modificar Interes</button>
 
                 </div>
@@ -74,7 +74,7 @@
             <br>
             <label><% if (Singleton.oCuenta != null) {
                     if (Singleton.oCuenta.UltimoInteresCalculado != -5) {
-                        out.println("El interes ganado es: $" + Singleton.oCuenta.UltimoInteresCalculado);
+                        out.println("El interes es: $" + Singleton.oCuenta.UltimoInteresCalculado);
                     }
                 }
                 %></label>

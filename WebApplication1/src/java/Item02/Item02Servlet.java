@@ -66,9 +66,11 @@ public class Item02Servlet extends HttpServlet {
                     break;
                 case 5:
                     Saldo = Double.parseDouble(request.getParameter("txtSaldo"));
-                    Singleton.oCuenta.Retiro(Saldo);
-                    oTransaccion = new Transaccion(Singleton.oCuenta.ObtenerCuenta(),Singleton.oCuenta.EstadoCuenta()+Saldo,"Retiro", Saldo,Singleton.oCuenta.EstadoCuenta());
-                    Singleton.oCuenta.transacciones.add(oTransaccion);
+                    int resp = Singleton.oCuenta.Retiro(Saldo);
+                    if (resp==1) {
+                        oTransaccion = new Transaccion(Singleton.oCuenta.ObtenerCuenta(),Singleton.oCuenta.EstadoCuenta()+Saldo,"Retiro", Saldo,Singleton.oCuenta.EstadoCuenta());
+                        Singleton.oCuenta.transacciones.add(oTransaccion);
+                    }
                     response.sendRedirect("Item2.jsp");
                     break;
                 case 6:

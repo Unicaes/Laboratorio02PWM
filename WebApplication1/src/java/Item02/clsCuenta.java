@@ -47,11 +47,12 @@ public class clsCuenta {
     public void Deposito(double monto){
         this.saldo+=monto;
     }
-    public void Retiro(double monto){
+    public int Retiro(double monto){
         if (monto>this.saldo) {
-            return;
+            return 0;
         }
         this.saldo-=monto;
+        return 1;
     }
     public void AsignarInteres(double interes){
         this.interes=interes;
