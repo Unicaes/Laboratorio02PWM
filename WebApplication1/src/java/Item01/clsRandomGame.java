@@ -44,6 +44,11 @@ public class clsRandomGame {
             return -1;
         }
     }
+    public void Surrender(){
+        clsRandomGame.result=-3;
+        clsRandomGame.intentos=1;
+        ResetRandomNumber();
+    }
     public void ResetRandomNumber(){
         clsRandomGame.LastRandomNumber = clsRandomGame.RandomNumber;
         clsRandomGame.RandomNumber=-1;

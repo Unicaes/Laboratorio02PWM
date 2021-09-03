@@ -36,21 +36,28 @@ public class Item1Servlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             clsRandomGame obj = new clsRandomGame();
             int tryout = Integer.parseInt(request.getParameter("txtUserNumber"));
-            int resp = obj.CheckRandomNumber(tryout);
-            clsRandomGame.result = resp;
+            int indexNumber = Integer.parseInt(request.getParameter("Consultar"));
+
+            if (indexNumber == 0) {
+                int resp = obj.CheckRandomNumber(tryout);
+                clsRandomGame.result = resp;
 //            out.println(tryout+"<br>");
 //            out.println(obj.GenerateRandomNumber()+"<br>");
-            if (resp==1) {
-                out.println("Felicidades, ha ganado");
-                obj.ResetRandomNumber();
-            }else if (resp==0) {
-                out.println("El numero ingresado es demasiado alto");
-            }else if(resp==-1){
-                out.println("El numero ingresado es demasiado bajo");
-            }else{
-                out.println("Se han acabado los intentos, la respuesta era: "+obj.GenerateRandomNumber());
-                obj.ResetRandomNumber();
+                if (resp == 1) {
+                    out.println("Felicidades, ha ganado");
+                    obj.ResetRandomNumber();
+                } else if (resp == 0) {
+                    out.println("El numero ingresado es demasiado alto");
+                } else if (resp == -1) {
+                    out.println("El numero ingresado es demasiado bajo");
+                } else {
+                    out.println("Se han acabado los intentos, la respuesta era: " + obj.GenerateRandomNumber());
+                    obj.ResetRandomNumber();
+                }
+            } else {
+                obj.Surrender();
             }
+
             response.sendRedirect("index.jsp");
         }
     }

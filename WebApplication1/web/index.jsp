@@ -31,12 +31,15 @@
                     out.println("El numero ingresado es demasiado bajo");
                 } else if (clsRandomGame.result == -2) {
                     out.println("Se han acabado los intentos, la respuesta era: " + clsRandomGame.LastRandomNumber);
+                } else if (clsRandomGame.result == -3) {
+                    out.println("Te has rendido, la respuesta era: "+clsRandomGame.LastRandomNumber);
                 }
             %>
             <form action="${pageContext.request.contextPath}/Item1Servlet" method="post ">
                 <label> Intento #<%=clsRandomGame.intentos%> </label>
                 <input type="number" max="1000" min="0" name="txtUserNumber" value="0" />
-                <button class="btn btn-success" type="submit" name="Consultar">Validar</button>    
+                <button class="btn btn-success" type="submit" name="Consultar" value="0">Validar</button>
+                <button class="btn btn-danger" type="submit" name="Consultar" value="1">Rendirse</button>
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
